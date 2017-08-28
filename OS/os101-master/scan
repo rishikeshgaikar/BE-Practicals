@@ -1,0 +1,48 @@
+
+
+import java.util.*;
+
+class Scan{
+	public static void main(String [] args){
+		int n, head, arm, maxc, thm ;
+		Scanner k = new Scanner(System.in);
+		System.out.println(">Enter No. of Pending Requests");
+		n = k.nextInt();
+		int req[] = new int[n];
+		System.out.println(">Enter Pending Requests");
+		for(int i = 0; i < n; i++){
+			req[i] = k.nextInt();
+		}
+		Arrays.sort(req);
+		System.out.println(">Enter Current Arm Position");
+		arm = k.nextInt();
+		System.out.println(">Enter Total Cylenders");
+		maxc = k.nextInt();
+		thm = (maxc - arm - 1) + (maxc - req[0] - 1);
+		System.out.println(">Total Head Moments Are: " + thm);
+
+	}
+}
+
+OUTPUT
+
+Enter No. of Pending Requests
+8
+Enter Pending Requests
+98
+183
+37
+122
+14
+124
+65
+67
+Enter Current Arm Position
+53
+Enter Total Cylenders
+200
+Total Head Moments Are: 331
+
+
+
+

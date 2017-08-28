@@ -1,0 +1,73 @@
+Algorithm : 
+Start the program.
+Declare the assembler directives.	
+Declare the variables.
+Get the data into data segment.
+Start the program by loading the first data into a register.
+Move the next data into another register. 
+Swap the values among the registers.
+Store the values after swapping.
+Display the output in the register. 
+Terminate the program ,
+
+
+Programs :
+---------------------------------------------------
+.model small ;Assembler Directives Declaration
+
+.data ; start the
+
+num1 dB 04h ;Assign 16 Bit Values to NUM1
+
+num2 dB 03h ;Assign 16 Bit Values to NUM2
+
+.code
+
+start:
+
+mov bx, @data ; Data To Register Transformation
+
+mov ds, bx ;Copy the Contents Of Register bx to ds
+
+mov al,num1 ; Copy the Contents Of Register num1 to al
+
+mov cl,num2 ; Copy the Contents Of Register num1 to cl
+
+xchg al,cl ;Exchange The Content Of Register al &amp; cl
+
+int 03h ;Interrupt
+
+end
+-------------------------------------------------------
+
+After Swapping
+
+.model small ;Assembler Directives Declaration
+
+.data ; start the
+
+num1 dB 04h ;Assign 16 Bit Values to NUM1
+
+num2 dB 03h ;Assign 16 Bit Values to NUM2
+
+.code
+
+start:
+
+mov bx, @data ; Data To Register Transformation
+
+mov ds, bx ;Copy the Contents Of Register bx to ds
+
+mov al,num1 ; Copy the Contents Of Register num1 to al
+
+mov cl,num2 ; Copy the Contents Of Register num1 to cl
+
+mov dl,al ;Copy the Contents Of Register al to dl
+
+mov al,cl ; Copy the Contents Of Register cl to al
+
+mov cl,dl ; Copy the Contents Of Register dl to cl
+
+int 03h ;Interrupt
+
+end

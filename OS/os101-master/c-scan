@@ -1,0 +1,51 @@
+import java.util.*;
+
+
+class Cscan{
+	public static void main(String [] args){
+		int n, head, arm, maxc, thm,temp = 0 ;
+		Scanner k = new Scanner(System.in);
+		System.out.println(">Enter No. of Pending Requests");
+		n = k.nextInt();
+		int req[] = new int[n];
+		System.out.println(">Enter Pending Requests");
+		for(int i = 0; i < n; i++){
+			req[i] = k.nextInt();
+		}
+		Arrays.sort(req);
+		System.out.println(">Enter Current Arm Position");
+		arm = k.nextInt();
+		System.out.println(">Enter Total Cylinders");
+		maxc = k.nextInt();
+		int i = 0;
+		while(req[i] <= arm){
+				temp = req[i];
+				i++;
+		}
+		thm = (maxc - arm - 1) + temp;
+		System.out.println(">Total Head Moments Are: " + thm);
+	}
+}
+
+
+
+
+OUTPUT
+
+
+>Enter No. of Pending Requests
+8
+>Enter Pending Requests
+185
+15
+195
+65
+155
+85
+170
+93
+>Enter Current Arm Position
+80
+>Enter Total Cylinders
+200
+>Total Head Moments Are: 184

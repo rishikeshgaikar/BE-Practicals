@@ -1,0 +1,314 @@
+
+
+1>General purpose commands
+
+
+Date: print or set system date & time
+
+
+ce4pc-03@CE4PC-03:~$ date 
+Mon Jul 13 15:17:14 IST 2015 
+
+
+ce4pc-03@CE4PC-03:~$ date +%h 
+Jul 
+
+
+ce4pc-03@CE4PC-03:~$ date +%m 
+07 
+
+
+ce4pc-03@CE4PC-03:~$ date +%d 
+13 
+
+
+ce4pc-03@CE4PC-03:~$ date +%y 
+15
+
+
+ce4pc-03@CE4PC-03:~$ date +%H 
+15
+
+
+ce4pc-03@CE4PC-03:~$ date +%M 
+18 
+
+
+ce4pc-03@CE4PC-03:~$ date +%S 
+17 
+
+
+cal- displays a calendar and the date
+ce4pc-03@CE4PC-03:~$ cal 
+     
+July 2015        
+Su Mo Tu We Th Fr Sa  
+          1  2  3  4  
+ 5  6  7  8  9 10 11  
+12 13 14 15 16 17 18  
+19 20 21 22 23 24 25  
+26 27 28 29 30 31     
+                      
+ce4pc-03@CE4PC-03:~$ cal 12 2014 
+   December 2014      
+Su Mo Tu We Th Fr Sa  
+    1  2  3  4  5  6  
+ 7  8  9 10 11 12 13  
+14 15 16 17 18 19 20  
+21 22 23 24 25 26 27  
+28 29 30 31           
+                      
+
+
+echo- display a text
+
+
+ce4pc-03@CE4PC-03:~$ echo "Hello everybody" 
+Hello everybody
+
+
+whoami-  print effective userid
+
+
+ce4pc-03@CE4PC-03:~$ whoami 
+ce4pc-03 
+
+
+man- an interface to the on-line reference manuals
+
+
+ce4pc-03@CE4PC-03:~$ man pwd 
+
+
+uptime-  Tell how long the system has been running.
+
+
+ce4pc-03@CE4PC-03:~$ uptime 
+ 15:20:19 up 28 min,  2 users,  load average: 0.00, 0.11, 0.15 
+
+
+uname- print system information
+
+
+ce4pc-03@CE4PC-03:~$ uname 
+Linux 
+
+
+ce4pc-03@CE4PC-03:~$ uname -a 
+Linux CE4PC-03 3.13.0-24-generic #46-Ubuntu SMP Thu Apr 10 19:08:14 UTC 2014 i686 i686 i686 GNU/Linux 
+
+
+hostname- show or set the system's host name
+
+
+ce4pc-03@CE4PC-03:~$ hostname 
+CE4PC-03 
+
+
+ bc- An arbitrary precision calculator language
+
+
+ce4pc-03@CE4PC-03:~$ bc 
+
+
+sqrt(196) 
+14 
+
+
+2>directory commands
+
+
+pwd- print name of current/working directory
+
+
+ce4pc-03@CE4PC-03:~$ pwd 
+/home/ce4pc-03 
+
+
+
+
+mkdir- make directories
+ce4pc-03@CE4PC-03:~$ mkdir abcd
+
+
+
+
+
+
+
+
+ls- list directory contents
+
+
+ce4pc-03@CE4PC-03:~$ ls 
+Desktop    exp.html  Music		  Pictures  s1.sh~    Templates 
+Documents  fq	     nasm-2.11.08	  Public    swap.sh   Videos 
+Downloads  hema      nasm-2.11.08.tar.gz  s1.sh     swap.sh~ 
+
+
+ce4pc-03@CE4PC-03:~$ ls -l
+
+
+cd- change directory 
+
+
+ce4pc-03@CE4PC-03:~$ cd abcd 
+ce4pc-03@CE4PC-03:~/abcd$ 
+
+
+rmdir- remove directory
+
+
+ce4pc-03@CE4PC-03:~$ rmdir abcd
+ce4pc-03@CE4PC-03:~$ ls 
+Desktop    exp.html  nasm-2.11.08	  Public  swap.sh    Videos 
+Documents  fq	     nasm-2.11.08.tar.gz  s1.sh   swap.sh~ 
+Downloads  Music     Pictures		  s1.sh~  Templates 
+
+
+
+
+2>file commands
+
+
+cat    (cat>f1=create file   cat f1=view file   touch =empty file)
+
+
+ce4pc-03@CE4PC-03:~$ cat>f1 
+abcd
+efgh
+ijkl
+
+
+ce4pc-03@CE4PC-03:~$ cat f1 
+abcd
+efgh
+ijkl
+
+
+touch- change file timestamps
+
+
+ce4pc-03@CE4PC-03:~$ touch f2 
+
+
+cp- copy files and directories
+
+
+ce4pc-03@CE4PC-03:~$ cp f1 f2 
+
+
+ce4pc-03@CE4PC-03:~$ cat f2 
+abcd
+efgh
+ijkl
+
+
+
+
+
+
+
+
+
+
+mv- move (rename) files
+
+
+ce4pc-03@CE4PC-03:~$ mv f1 fq 
+ce4pc-03@CE4PC-03:~$ cat f1 
+cat: f1: No such file or directory 
+
+
+ce4pc-03@CE4PC-03:~$ cat fq
+abcd
+efgh
+ijkl 
+
+
+wc- print newline, word, and byte counts for each file
+
+
+ce4pc-03@CE4PC-03:~$ wc fq 
+ 3 3 12 fq 
+
+
+head- output the first part of files
+
+
+
+
+ce4pc-03@CE4PC-03:~$ head -2 fq 
+abcd
+efgh
+
+
+tail- output the last part of files
+
+
+ce4pc-03@CE4PC-03:~$ tail -2 fq 
+efgh
+ijkl 
+
+
+sort- sort lines of text files
+
+
+ce4pc-03@CE4PC-03:~/hema$ sort fq 
+abcd
+efgh
+ijkl 
+
+
+ce4pc-03@CE4PC-03:~/hema$ sort -d fq 
+abcd
+efgh
+ijkl 
+
+
+ce4pc-03@CE4PC-03:~/hema$ sort -r fq 
+ijkl
+efgh
+abcd
+
+
+tr-  translate or delete characters
+
+
+ce4pc-03@CE4PC-03:~$ cat fq | tr "[a-z]" "[A-Z]" 
+IJKL
+EFGH
+ABCD
+
+
+3> Network commands
+
+
+ ifconfig - configure a network interface
+
+
+ce4pc-03@CE4PC-03:~$ ifconfig 
+eth0      Link encap:Ethernet  HWaddr 48:5b:39:c0:9f:fc  
+          inet addr:192.168.2.124  Bcast:192.168.255.255  Mask:255.255.0.0
+          inet6 addr: fe80::4a5b:39ff:fec0:9ffc/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:316904 errors:0 dropped:1568 overruns:0 frame:0
+          TX packets:89022 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:68418939 (68.4 MB)  TX bytes:26169805 (26.1 MB)
+
+
+lo        Link encap:Local Loopback  
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          RX packets:10811 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:10811 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:4995759 (4.9 MB)  TX bytes:4995759 (4.9 MB)
+
+
+ping-  send ICMP ECH0_REQUEST to network hosts
+   ce4pc-03@CE4PC-03:~$ping 192.168.2.120
+
+

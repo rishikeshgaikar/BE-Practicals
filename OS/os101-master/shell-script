@@ -1,0 +1,310 @@
+1. FACTORIAL OF NUMBER
+
+
+SCRIPT
+echo ”Enter the number”
+read num
+fact=1
+i=0
+#if enter value less than 0 
+if [ $num -le 0 ] ; then 
+  echo "invalid number" 
+  exit 
+fi
+ #factorial logic 
+if [ $num -gt 0 ] ; then 
+while [ $num -ne $i ]
+do
+        i=`expr $i + 1`
+        fact=`expr $fact \* $i`
+done
+fi
+echo “ The factorial of a number is $fact”        
+
+
+OUTPUT
+rishikesh@CHETAN-LAPTOP:/mnt/c/Users/rishi/Desktop$ ./fact.sh
+”Enter the number”
+5
+“ The factorial of a number is 120”
+rishikesh@CHETAN-LAPTOP:/mnt/c/Users/rishi/Desktop$ ^C
+
+2. FIBONACCI
+
+
+SCRIPT
+echo "How many numbers do you want of Fibonacci series ?" 
+  read total 
+  x=0 
+  y=1 
+  i=2 
+  echo "Fibonacci Series up to $total terms :: " 
+  echo "$x" 
+  echo "$y" 
+  while [ $i -lt $total ] 
+  do 
+      i=`expr $i + 1 ` 
+      z=`expr $x + $y ` 
+      echo "$z" 
+      x=$y 
+      y=$z 
+  done
+
+
+
+
+
+
+
+
+OUTPUT
+rishikesh@CHETAN-LAPTOP:/mnt/c/Users/rishi/Desktop$ ./fibo.sh
+How many numbers do you want of Fibonacci series ?
+5
+Fibonacci Series up to 5 terms ::
+0
+1
+1
+2
+3
+rishikesh@CHETAN-LAPTOP:/mnt/c/Users/rishi/Desktop$
+
+3.PALINDROME
+
+
+SCRIPT
+clear
+echo "Enter a string:"
+read str
+echo
+len=`echo $str | wc -c`
+len=`expr $len - 1`
+i=1
+j=`expr $len / 2`
+while test $i -le $j
+do
+k=`echo $str | cut -c $i`
+l=`echo $str | cut -c $len`
+if test $k != $l
+then
+echo "String is not palindrome"
+exit
+fi
+i=`expr $i + 1`
+len=`expr $len - 1`
+done
+echo "String is palindrome"
+
+
+OUTPUT
+Enter a string:
+madam
+String is palindrome
+rishikesh@CHETAN-LAPTOP:/mnt/c/Users/rishi/Desktop$
+
+4.PRIME
+
+
+SCRIPT
+echo -n "Enter a number: "
+read num
+i=2
+while [ $i -lt $num ]
+do
+  if [ `expr $num % $i` -eq 0 ]
+  then
+      echo "$num is not a prime number"
+      echo "Since it is divisible by $i"
+      exit
+  fi
+  i=`expr $i + 1`
+done
+echo "$num is a prime number "
+
+
+OUTPUT
+rishikesh@CHETAN-LAPTOP:/mnt/c/Users/rishi/Desktop$ ./prime.sh
+Enter a number: 5
+5 is a prime number
+rishikesh@CHETAN-LAPTOP:/mnt/c/Users/rishi/Desktop$ ./prime.sh
+Enter a number: 6
+6 is not a prime number
+Since it is divisible by 2
+
+5.STAR
+
+
+SCRIPT
+echo "Stars"
+for((i=1; i<=5; i++))
+do
+    for((j=1; j<=i;  j++ ))
+    do
+     echo -n " *"
+    done
+    echo ""
+done
+for (( i=5; i>=1; i-- ))
+do
+    for (( j=1; j<=i;  j++ ))
+    do
+     echo -n " *"
+    done
+    echo ""
+done
+
+
+OUTPUT
+rishikesh@CHETAN-LAPTOP:/mnt/c/Users/rishi/Desktop$ ./stars.sh
+Stars
+ *
+ * *
+ * * *
+ * * * *
+ * * * * *
+ * * * * *
+ * * * *
+ * * *
+ * *
+ *
+6.LEAP YEAR
+
+
+SCRIPT
+yy=0
+isleap="false"
+i="y" 
+while [ $i = "y" ]
+do
+echo -n "Enter year (yyyy) : "
+read yy
+ 
+# find out if it is a leap year or not
+ 
+if [ $((yy % 400)) -eq 0 ] ; then
+isleap="true"
+echo "$yy is a leap year"
+  elif [ $((yy % 100)) -eq 0 ] ; then
+  echo "$yy is NOT leap year"
+    elif [ $((yy % 4)) -eq 0 ] ; then
+    isleap="true"
+    echo "$yy is a leap year"
+      else
+: # not a leap year do nothing and use old value of isleap
+      isleap="false"
+      echo "$yy is NOT leap year"
+fi
+echo "Do u want to continue ?"
+read i
+if [ $i != "y" ]
+then
+    exit
+fi
+done
+
+
+OUTPUT
+rishikesh@CHETAN-LAPTOP:/mnt/c/Users/rishi/Desktop$ ./leap1.sh
+Enter year (yyyy) : 2008
+2008 is a leap year
+Do u want to continue ?
+y
+Enter year (yyyy) : 2009
+2009 is NOT leap year
+Do u want to continue ?
+n
+rishikesh@CHETAN-LAPTOP:/mnt/c/Users/rishi/Desktop$
+
+7.CALCULATOR
+SCRIPT
+echo "CALCULATOR"
+result=0
+i="y"
+echo " Enter first no."
+read a
+echo "Enter second no."
+read b
+while [ $i = "y" ]
+do
+echo "Arithmatic operations:"
+echo  "a. for addition"
+echo  "s. for subtraction"
+echo  "m. for multiplication"
+echo  "d. for division"
+echo "Enter your choice:"
+read op
+case $op in
+a) result=`expr $a + $b`
+     echo "Sum ="$result;;
+
+
+s) result=`expr $a - $b`
+     echo "Difference ="$result;;
+
+
+m) result=`expr $a \* $b`
+     echo "Multiplication ="$result;;
+
+
+d) result=`expr $a / $b`
+     echo "Division ="$result;;
+
+
+*) echo "Enter correct choice"
+esac
+echo "Do u want to continue ?"
+read i
+if [ $i != "y" ]
+then
+    exit
+fi
+done
+ 
+OUTPUT
+rishikesh_07@RISHIKESH:/mnt/c/Users/rishi/Desktop$ ./calc.sh
+CALCULATOR
+ Enter first no.
+5
+Enter second no.
+4
+Arithmatic operations:
+a. for addition
+s. for subtraction
+m. for multiplication
+d. for division
+Enter your choice:
+a
+Sum =9
+Do u want to continue ?
+y
+Arithmatic operations:
+a. for addition
+s. for subtraction
+m. for multiplication
+d. for division
+Enter your choice:
+s
+Difference =1
+Do u want to continue ?
+y
+Arithmatic operations:
+a. for addition
+s. for subtraction
+m. for multiplication
+d. for division
+Enter your choice:
+m
+Multiplication =20
+Do u want to continue ?
+y
+Arithmatic operations:
+a. for addition
+s. for subtraction
+m. for multiplication
+d. for division
+Enter your choice:
+d
+Division =1
+Do u want to continue ?
+n
+rishikesh_07@RISHIKESH:/mnt/c/Users/rishi/Desktop$
