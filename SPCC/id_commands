@@ -1,0 +1,9 @@
+finger — List information about a user.
+logname — Return a user's login name.
+who — Report which users are logged in to the system.
+-G, --groups---print all group IDs.
+
+id -a: To print user name, UID of all the group to which the user belongs
+id -G: To print all different group IDs (effective, real and supplementary)
+id -g: To print the effective group ID
+id -u: To print the effective user ID

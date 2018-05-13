@@ -1,0 +1,169 @@
+import java.io.*;
+class LRU
+{
+ public static int sort(int c[],int f)
+{ 
+  int max=-1;
+  int temp=-1;
+  for(int k=0;k<f;k++)
+ {
+  if(c[k]>max)
+    {
+        max=c[k];
+        temp=k;
+    }
+ }
+return temp;
+}
+ public static void main(String args[])throws IOException
+{
+int z,m=0,hit=0,faults=0;
+InputStreamReader isr=new InputStreamReader(System.in);
+BufferedReader br=new BufferedReader(isr);
+System.out.println("enter the size of the array");
+int n=Integer.parseInt(br.readLine());
+System.out.println("enter the number of frames");
+int f=Integer.parseInt(br.readLine());
+int a[]=new int[n];
+int flag[]=new int[n];
+System.out.println("enter the elements");
+for(int i=0;i<n;i++)
+{
+a[i]=Integer.parseInt(br.readLine());
+flag[i]=0;
+}
+int b[]=new int[f];
+int c[]=new int[f];
+for(int i=0;i<f;i++)
+{
+ b[i]=-1;
+ c[i]=0;
+}
+for(int i=0;i<n;i++)
+{
+  z=a[i];
+   for(int j=0;j<f;j++)
+     {
+      if(z==b[j])
+       {
+        flag[i]=1;
+        hit=hit+1;
+	for(int k=0;k<f;k++)
+        {
+	if(b[k]!=-1)
+	c[k]=c[k]+1;
+	}
+        c[j]=0;
+	break;
+       }
+      }
+if (flag[i]==0 && b[f-1]==-1)
+{
+ for(int j=0;j<f;j++)
+ {
+    if(b[j]==-1)
+        {
+         b[j]=z;
+         faults=faults+1;
+         flag[i]=1;
+	for(int k=0;k<f;k++)
+        {
+	if(b[k]!=-1)
+	c[k]=c[k]+1;
+	}
+        c[j]=0;
+        break;
+        }
+   }
+}
+    if(flag[i]==0)
+       {
+        m=sort(c,f);
+        b[m]=z;
+        faults=faults+1;
+        flag[i]=1;
+        for(int k=0;k<f;k++)
+        c[k]=c[k]+1;
+        c[m]=0;
+       }
+   for(int k=0;k<f;k++)
+     {
+       System.out.print(b[k]+" ");
+     }
+System.out.println(" "); 
+}
+System.out.println("no of hits"+hit);
+System.out.println("no of faults"+faults);
+
+
+}
+}
+
+
+
+
+Output:
+infinity@infinity-H97M-D3H:~$ java LRU
+enter the size of the array
+12
+enter the number of frames
+3
+enter the elements
+6
+0
+12
+0
+30
+4
+2
+30
+32
+1
+20
+15
+6 -1 -1  
+6 0 -1  
+6 0 12  
+6 0 12  
+30 0 12  
+30 0 4  
+30 2 4  
+30 2 4  
+30 2 32  
+30 1 32  
+20 1 32  
+20 1 15  
+no of hits2
+no of faults10
+infinity@infinity-H97M-D3H:~$ java LRU
+enter the size of the array
+12
+enter the number of frames
+4
+enter the elements
+6
+0
+12
+0
+30
+4
+2
+30
+32
+1
+20
+15
+6 -1 -1 -1  
+6 0 -1 -1  
+6 0 12 -1  
+6 0 12 -1  
+6 0 12 30  
+4 0 12 30  
+4 0 2 30  
+4 0 2 30  
+4 32 2 30  
+1 32 2 30  
+1 32 20 30  
+1 32 20 15  
+no of hits2
+no of faults10

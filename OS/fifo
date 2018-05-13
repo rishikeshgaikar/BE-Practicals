@@ -1,0 +1,187 @@
+import java.io.*; 
+class FIFO 
+{ 
+        public static void main(String args[]) throws IOException 
+        { 
+                int fifo[]=new int[10]; 
+                int n,f; 
+       		BufferedReader br=new BufferedReader(new InputStreamReader(System.in)); 
+                System.out.println("Enter the number of inputs :"); 
+                n=Integer.parseInt(br.readLine()); 
+                int inp[]=new int[n]; 
+                System.out.println("Enter the inputs:"); 
+                for(int i=0;i<n;i++) 
+                        inp[i]=Integer.parseInt(br.readLine()); 
+		System.out.println("Enter the number of Frams"); 
+		f=Integer.parseInt(br.readLine()); 
+                System.out.println("FIFO Page Replacement: "); 
+                for(int i=0;i<f;i++) 
+                        fifo[i]=-1; 
+                int Hit=0; 
+                int Fault=0; 
+                int j=0; 
+                boolean check; 
+                for(int i=0;i<n;i++) 
+                { 
+                        check=false; 
+
+
+
+
+                                for(int k=0;k<f;k++) 
+                                if(fifo[k]==inp[i]) 
+                                { 
+                                        check=true; 
+                                        Hit=Hit+1; 
+                                } 
+                                if(check==false) 
+                                { 
+                                        fifo[j]=inp[i]; 
+                                        j++; 
+                                        if(j>=f) 
+                                        j=0; 
+                                        Fault=Fault+1; 
+                                } 
+				for(int k=0;k<f;k++) 
+				{ 
+				System.out.print(fifo[k]+" "); 
+				} 
+				System.out.println(); 
+
+
+
+
+
+
+                } 
+                System.out.println("HIT:"+Hit+"  FAULT;"+Fault); 
+        } 
+}
+
+
+
+
+Output:
+
+
+1]
+Enter the number of inputs : 
+15 
+Enter the inputs: 
+7 
+5 
+2 
+1 
+3 
+4 
+5 
+1 
+7 
+2 
+5 
+2 
+0 
+1 
+3 
+Enter the number of Frams 
+3 
+FIFO Page Replacement: 
+7 -1 -1 
+7 5 -1 
+7 5 2 
+1 5 2 
+1 3 2 
+1 3 4 
+5 3 4 
+5 1 4 
+5 1 7 
+2 1 7 
+2 5 7 
+2 5 7 
+2 5 0 
+1 5 0 
+1 3 0 
+HIT:1  FAULT;14 
+
+
+2] 
+Enter the number of inputs : 
+15 
+Enter the inputs: 
+7 
+5 
+2 
+1 
+3 
+4 
+5 
+1 
+7 
+2 
+5 
+2 
+0 
+1 
+3 
+Enter the number of Frams 
+4 
+FIFO Page Replacement: 
+7 -1 -1 -1 
+7 5 -1 -1 
+7 5 2 -1 
+7 5 2 1 
+3 5 2 1 
+3 4 2 1 
+3 4 5 1 
+3 4 5 1 
+3 4 5 7 
+2 4 5 7 
+2 4 5 7 
+2 4 5 7 
+2 0 5 7 
+2 0 1 7 
+2 0 1 3 
+HIT:3  FAULT;12 
+
+
+3]
+
+
+Enter the number of inputs : 
+15 
+Enter the inputs: 
+7 
+5 
+2 
+1 
+3 
+4 
+5 
+1 
+7 
+2 
+5 
+2 
+0 
+1 
+3 
+Enter the number of Frams 
+5 
+FIFO Page Replacement: 
+7 -1 -1 -1 -1 
+7 5 -1 -1 -1 
+7 5 2 -1 -1 
+7 5 2 1 -1 
+7 5 2 1 3 
+4 5 2 1 3 
+4 5 2 1 3 
+4 5 2 1 3 
+4 7 2 1 3 
+4 7 2 1 3 
+4 7 5 1 3 
+4 7 5 2 3 
+4 7 5 2 0 
+1 7 5 2 0 
+1 3 5 2 0 
+HIT:3  FAULT;12 
+ce307pc06@ce307pc06:~$ 

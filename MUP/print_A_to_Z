@@ -1,0 +1,31 @@
+Algorithm : 
+Start the program .
+Declare the assembler directives.	
+Declare a macro that can be used in program.
+Macro is used to get the data from keyboard and display it.
+Move the first data into accumulator. 
+Set the counter value. 
+Keep on incrementing accumulator value.
+Decrement the counter value until it becomes zero.
+Display the output in the screen. 
+Terminate the program 
+
+Programs :
+.model small
+ 	disp macro char
+      		mov ah,02h
+      		mov dl,char
+      		Int 21h
+  	endm
+.data
+.code
+.startup
+    	mov al,'a'
+    	mov cl,26
+    	print:disp al
+    	          inc al
+   	loop print
+  	 mov ah,04h
+  	int 21h
+.exit
+End

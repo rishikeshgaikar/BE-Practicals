@@ -1,0 +1,46 @@
+import java.util.*;
+
+class Look{
+	public static void main(String [] args){
+		int n, head, arm, maxc, thm ;
+		Scanner k = new Scanner(System.in);
+		System.out.println(">Enter No. of Pending Requests");
+		n = k.nextInt();
+		int req[] = new int[n];
+		System.out.println(">Enter Pending Requests");
+		for(int i = 0; i < n; i++){
+			req[i] = k.nextInt();
+		}
+		Arrays.sort(req);
+		System.out.println(">Enter Current Arm Position");
+		arm = k.nextInt();
+		System.out.println(">Enter Total Cylinders");
+		maxc = k.nextInt();
+		thm = 2*req[n - 1] - arm - req[0];
+		System.out.println(">Total Head Moments Are: " + thm);
+
+	}
+}
+
+OUTPUT
+
+C:\Program Files\Java\jdk\bin>javac Look.java
+
+C:\Program Files\Java\jdk\bin>java Look
+>Enter No. of Pending Requests
+8
+>Enter Pending Requests
+185
+15
+195
+65
+155
+85
+170
+90
+>Enter Current Arm Position
+80
+>Enter Total Cylinders
+200
+>Total Head Moments Are: 295
+

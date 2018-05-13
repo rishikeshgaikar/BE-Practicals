@@ -1,0 +1,79 @@
+Algorithm : 
+Start the program .
+Declare the assembler directives.	
+Declare a macro that can be used in program.
+Macro1 is used to print the string .
+Macro2 is used to copy the string .
+Push the given string in a stack.
+Pop up the reverse string. 
+Keep comparing the data along with the original string. 
+Display the output in the screen. 
+Terminate the program 
+
+Programs :
+.model small 
+  	print macro p
+      		lea dx,p
+      		mov ah,09h
+      		int 21h
+   	endm
+	 copy macro q
+      		lea dx,q
+     		 mov ah,0ah
+     		 int 21h
+  	 endm
+.data
+	a db 20h dup("$")
+	b db 20h dup("$")
+	d db 0ah,0dh,("$")
+	e db "enter the string $"
+	f db "reverse the string $"
+	g db "String is palindrome $"
+	h db "String is not a palindrome $"
+.code
+.startup 
+	print e
+	print d
+	copy a
+	print d
+	print f
+	print d
+	lea si,a
+	lea di,b
+	inc si
+	mov dl,[si]
+	mov dh,00h
+	add si,dx
+	mov cx,dx
+	push cx
+  l1:
+	mov bh,[si]
+	mov [di],bh
+	inc di
+	dec si
+ 	loop l1
+	print b
+	lea di,b
+	lea si,a
+	inc si
+	inc si
+	pop cx
+  l2: 
+	mov bh,[si]
+	cmp bh,[di]
+	jne l3
+ 	inc si
+	inc di
+	loop l2
+ 	print d
+	 print g
+ 	jmp l4
+  l3: 
+ 	print d
+ 	print h
+  l4:
+ 	.exit
+	end 
+	 int 21h
+.exit
+End
